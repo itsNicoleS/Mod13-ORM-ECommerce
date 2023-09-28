@@ -45,30 +45,32 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
 
-  Category.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-    include: [ Product ]
-  })
-  .then((category) => { res.status(200).json(category)})
-  .catch((err) => res.status(400).json(err))
-
+  try {
+    const updateData = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      include: [Product]
+    });
+    res.status(200).json(updateData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
-    const categoryData = await Category.destroy({
+    const deletedData = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!categoryData) {
+    if (!deletedData) {
       res.status(404).json({ message: "No such thing here!" });
       return;
     }
-    res.status(200).json(categoryData);
+    res.status(200).json(deletedData);
   } catch (err) {
     res.status(500).json(err);
   }
