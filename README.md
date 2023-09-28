@@ -13,13 +13,9 @@ This is a basic database and seed setup for an e-commerce website application.
 Express, MySQL, Insomnia (or other test client). 
 
 ## Usage
+screenshots in assets/images. 
 
-    ```md
-    ![Get Categories](assets/images/getCategories.png)
-    ![Get Products](assets/images/getProducts.png)
-    ![Get Tags](assets/images/getTags.png)
-    ```
 ## License
 
-MIT. 
+MIT
 ---
